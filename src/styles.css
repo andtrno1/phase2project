@@ -1,0 +1,9 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  background-blend-mode: color;
+}
+.body {
+  align-items: center;
+  position: relative;
+}
