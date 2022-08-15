@@ -32,7 +32,6 @@ export default function Home() {
           onChange={(e) => {
             setSearch(e.target.value);
           }}
-          label="Search your cryptocurrencies"
         />
       </div>
       <table>

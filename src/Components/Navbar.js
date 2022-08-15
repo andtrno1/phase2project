@@ -5,10 +5,11 @@ import { useState } from "react";
 import "./Components.css";
 
 import styled from "styled-components";
+import Home from "./Home";
 
 export default function Navbar() {
   const [login, setLogin] = useState(false);
-
+  
   const showLoginForm = () => {
     setLogin(!login);
   };
@@ -21,6 +22,8 @@ export default function Navbar() {
 
   return (
     <>
+      {!login ? (
+      <>
       <About>
         <a href="/about">About</a>
       </About>
@@ -29,27 +32,48 @@ export default function Navbar() {
       </Pricing>
       <SignUp onClick={showRegisterForm}>Sign Up</SignUp>
       <SignIn onClick={showLoginForm}>Sign In</SignIn>
-      <SignUp>
+      <Home1>
         <a href="/">Home</a>
-      </SignUp>
-
-      {login && (
-        <InnerPopup>
-          <Overlay onClick={showLoginForm}></Overlay>
+      </Home1>
+      <Comment>
+        <a href="/Comments">Comments</a>
+      </Comment>
+      </>):(
+        <div>
+        <About>
+        <a href="/about">About</a>
+      </About>
+      <Pricing>
+        <a href="/pricing">Pricing</a>
+      </Pricing>
+      <Home1>
+        <a href="/">Home</a>
+      </Home1>
+      <Comment>
+        <a href="/Comments">Comments</a>
+      </Comment>
+      <Logout onClick={showLoginForm}>
+        <a href="/">Logout</a>
+      </Logout>
+      <InnerPopup>
           <Content>
             <LoginForm />
-            <CloseBtn onClick={showLoginForm}>close</CloseBtn>
+            <CloseBtn onClick={showLoginForm}>Close</CloseBtn>
           </Content>
         </InnerPopup>
+      </div>
       )}
+      
 
       {register && (
         <InnerPopup2>
           <Overlay2 onClick={showRegisterForm}></Overlay2>
           <Content>
+            
             <RegisterForm />
             <CloseBtn onClick={showRegisterForm}>Close</CloseBtn>
           </Content>
+
         </InnerPopup2>
       )}
     </>
@@ -114,8 +138,11 @@ const Overlay2 = styled.div`
 `;
 
 const InnerPopup = styled.div`
+  position: fixed;
   width: 100vw;
   height: 100vh;
+
+  padding-left:1200px;
   top: 0;
   left: 0;
   right: 0;
@@ -173,7 +200,7 @@ const Content = styled.div`
   left: 50%;
   transform: translate(-50%, -50%);
   line-height: 1.4;
-  background: #f1f1f1;
+  background: alice-blue;
   padding: 14px 28px;
   border-radius: 3px;
   max-width: 600px;
@@ -186,4 +213,31 @@ let CloseBtn = styled.button`
   width: 60px;
 
   cursor: pointer;
+`;
+
+let Home1 = styled.button`
+  float: right;
+  height: 50px;
+  width: 50px;
+  position: relative;
+  background-color: aliceblue;
+  border: none;
+`;
+
+let Comment = styled.button`
+  float: right;
+  height: 50px;
+  width: 100px;
+  position: relative;
+  background-color: aliceblue;
+  border: none;
+`;
+
+let Logout = styled.button`
+  float: right;
+  height: 50px;
+  width: 50px;
+  position: relative;
+  background-color: aliceblue;
+  border: none;
 `;
